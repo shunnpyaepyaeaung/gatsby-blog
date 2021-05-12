@@ -34,8 +34,16 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type PostJson {
+      id: ID
       title: String
       body: String
+      wordCount: Int
+      isActive: Boolean
+      rating: Float
+    }
+    type TodoJson{
+      task: String
+      done: Boolean
     }
   `;
   createTypes(typeDefs);
@@ -50,12 +58,36 @@ exports.createResolvers = ({ createResolvers }) => {
           console.log("Hitting the query");
           return [
             {
+              id: "1",
               title: "Hello world",
               body: "My custom text",
+              wordCount: 200,
+              isActive: true,
+              rating: 4.23,
             },
             {
+              id: "2",
               title: "Hello world 2",
               body: "My custom text 2",
+              wordCount: 300,
+              isActive: false,
+              rating: 2.23,
+            },
+          ];
+        },
+      },
+      allTodo: {
+        type: ["TodoJson"],
+        resolve() {
+          console.log("todo testing");
+          return [
+            {
+              task: "to eat",
+              done: false,
+            },
+            {
+              task: "to study gatsby",
+              done: true,
             },
           ];
         },
