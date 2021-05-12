@@ -30,7 +30,16 @@ exports.createPages = async ({ actions: { createPage } }) => {
   }
 };
 
-exports.createSchemaCustomization = () => {};
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type PostJson {
+      title: String
+      body: String
+    }
+  `;
+  createTypes(typeDefs);
+};
 
 exports.createResolvers = ({ createResolvers }) => {
   const resolver = {
