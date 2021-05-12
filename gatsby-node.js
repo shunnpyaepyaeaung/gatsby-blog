@@ -32,7 +32,13 @@ exports.createPages = async ({ actions: { createPage } }) => {
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
+
   const typeDefs = `
+    type PostContent {
+      title: String
+      text: String
+    }
+
     type PostJson {
       id: ID
       title: String
@@ -40,10 +46,29 @@ exports.createSchemaCustomization = ({ actions }) => {
       wordCount: Int
       isActive: Boolean
       rating: Float
+      tags: [String!]!
+      content: PostContent
     }
-    type TodoJson{
+
+    type TodoJson {
       task: String
       done: Boolean
+    }
+
+    input TitleFilter {
+      eq: String,
+      in: String
+    }
+
+    type StudyJson {
+      title: String
+      done: Boolean
+      month: String
+    }
+
+    input StudyTitleFilter {
+      eq: String
+      inc: String
     }
   `;
   createTypes(typeDefs);
@@ -54,9 +79,14 @@ exports.createResolvers = ({ createResolvers }) => {
     Query: {
       allPost: {
         type: ["PostJson"],
-        resolve() {
-          console.log("Hitting the query");
-          return [
+        args: {
+          filter: `input PostFilterInput {title: TitleFilter}`,
+          limit: "Int",
+        },
+        resolve(source, { filter }, context, info) {
+          const { title } = filter || {};
+          const { eq } = title || {};
+          const posts = [
             {
               id: "1",
               title: "Hello world",
@@ -64,23 +94,78 @@ exports.createResolvers = ({ createResolvers }) => {
               wordCount: 200,
               isActive: true,
               rating: 4.23,
+              tags: ["React JS", "Programming", "Development"],
+              content: {
+                text: "My content text",
+                title: "My content title",
+              },
             },
             {
               id: "2",
               title: "Hello world 2",
-              body: "My custom text 2",
               wordCount: 300,
               isActive: false,
               rating: 2.23,
+              tags: ["Angular JS", "Programming", "Development"],
+              content: {
+                text: "My content text 2",
+                title: "My content title 2",
+              },
             },
           ];
+
+          if (eq) {
+            return posts.filter((post) => post.title === eq);
+          }
+
+          return posts;
+        },
+      },
+      allStudyList: {
+        type: ["StudyJson"],
+        args: {
+          filter: `input StudyFilterInput {data: StudyTitleFilter}`,
+          limit: "Int",
+        },
+        resolve(source, { filter }, context, info) {
+          const { data } = filter || {};
+          const { eq, inc } = data || {};
+          const studyList = [
+            {
+              title: "Study React JS",
+              done: false,
+              month: "January",
+            },
+            {
+              title: "Study Gatsby",
+              done: true,
+              month: "May",
+            },
+            {
+              title: "Study HTML",
+              done: true,
+              month: "January",
+            },
+          ];
+          if (eq) {
+            return studyList.filter(
+              (sub) => sub.title === eq || sub.month === eq
+            );
+          }
+          if (inc) {
+            return studyList.filter((sub) => sub.title.includes(inc));
+          }
+          return studyList;
         },
       },
       allTodo: {
         type: ["TodoJson"],
-        resolve() {
-          console.log("todo testing");
-          return [
+        args: {
+          filter: "Boolean",
+        },
+        resolve(source, args, context, info) {
+          const { filter } = args;
+          const todos = [
             {
               task: "to eat",
               done: false,
@@ -89,7 +174,15 @@ exports.createResolvers = ({ createResolvers }) => {
               task: "to study gatsby",
               done: true,
             },
+            {
+              task: "hangout",
+              done: false,
+            },
           ];
+          if (filter) {
+            return todos.filter((todo) => todo.done === filter);
+          }
+          return todos;
         },
       },
     },
