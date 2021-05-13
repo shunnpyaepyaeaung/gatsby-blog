@@ -18,49 +18,35 @@ exports.createPages = async ({ actions: { createPage } }) => {
   });
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
+  const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+  const posts = res.data;
 
-  const typeDefs = `
-    type PostJson {
-      id: ID
-      title: String
-      body: String
-    }
-
-    input TitleFilter {
-      eq: String,
-      in: String
-    }
-  `;
-  createTypes(typeDefs);
-};
-
-exports.createResolvers = ({ createResolvers }) => {
-  const resolver = {
-    Query: {
-      allPost: {
-        type: ["PostJson"],
-        args: {
-          filter: `input PostFilterInput {title: TitleFilter}`,
-          limit: "Int",
-        },
-        async resolve(source, { filter }, context, info) {
-          const { title } = filter || {};
-          const { eq } = title || {};
-          const res = await axios.get(
-            "https://jsonplaceholder.typicode.com/posts"
-          );
-          const posts = res.data;
-
-          if (eq) {
-            return posts.filter((post) => post.title === eq);
-          }
-
-          return posts;
-        },
+  posts.forEach((post) => {
+    const node = {
+      title: post.title,
+      body: post.body,
+      // The node id must be globally unique
+      id: createNodeId(`Post-${post.id}`),
+      // ID to the parent Node
+      parent: null,
+      // ID to the children Nodes
+      children: [],
+      // Internal fields are not usually interesting for consumers
+      // but are very important for Gatsby Core
+      internal: {
+        // globally unique node type
+        type: "Post",
+        // "Hash" or short digital summary of this node
+        contentDigest: createContentDigest(post),
+        // content exposing raw content of this node
+        content: JSON.stringify(post),
       },
-    },
-  };
-  createResolvers(resolver);
+    };
+    actions.createNode(node);
+  });
 };
