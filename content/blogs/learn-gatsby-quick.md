@@ -1,7 +1,9 @@
 ---
-title: Learn Gatsby First
+title: Learn Gatsby Fast
 subtitle: learning Gatsby is super speed up!
 date: 2021-05-10
+slug: learn-gatsby-quick
+author: Shunn Pyae Pyae Aung
 ---
 
 # h1 Heading 8-)

@@ -2,6 +2,8 @@
 title: Learn Programming in JS
 subtitle: learning programming is super cool!
 date: 2021-10-10
+slug: learn-program-in-js
+author: Shunn Pyae Pyae Aung
 ---
 
 ## Emphasis
