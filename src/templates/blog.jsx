@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { graphql } from "gatsby";
+import "./blog.scss";
 
 const blog = ({ data, pageContext: { slug } }) => {
   const {
@@ -10,7 +11,9 @@ const blog = ({ data, pageContext: { slug } }) => {
   return (
     <Layout>
       <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="blog-content">
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </div>
     </Layout>
   );
 };

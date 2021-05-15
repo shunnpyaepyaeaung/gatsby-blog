@@ -26,7 +26,10 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      limit: 3
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       nodes {
         id
         frontmatter {

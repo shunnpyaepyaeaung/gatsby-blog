@@ -4,6 +4,7 @@ subtitle: learning programming is super cool!
 date: 2021-10-10
 slug: learn-program-in-js
 author: Shunn Pyae Pyae Aung
+rating: 1
 ---
 
 ## Emphasis
@@ -15,6 +16,16 @@ author: Shunn Pyae Pyae Aung
 _This is italic text_
 
 _This is italic text_
+
+Syntax highlighting
+
+```js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+```
 
 ~~Strikethrough~~
 

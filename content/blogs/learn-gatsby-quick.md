@@ -4,6 +4,7 @@ subtitle: learning Gatsby is super speed up!
 date: 2021-05-10
 slug: learn-gatsby-quick
 author: Shunn Pyae Pyae Aung
+rating: 4
 ---
 
 # h1 Heading 8-)
