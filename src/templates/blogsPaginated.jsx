@@ -54,10 +54,13 @@ export const query = graphql`
       skip: $skip
     ) {
       nodes {
+        id
         frontmatter {
           slug
           subtitle
           title
+          date(formatString: "DD MMMM, YYYY")
+          author
         }
       }
     }
