@@ -1,14 +1,23 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/Layout";
+import BlogListing from "../components/BlogListing";
 
-const blogsPaginated = ({ pageContext }) => {
+const blogsPaginated = ({ pageContext, data }) => {
   const { limit, currentPage, numOfPages } = pageContext;
+  const { nodes } = data.allMarkdownRemark;
+  const prevPage = currentPage - 1 === 1 ? "" : (currentPage - 1).toString();
+  const nextPage = (currentPage + 1).toString();
   return (
-    <>
-      <div>Items per page : {limit}</div>
-      <div>Current page : {currentPage}</div>
-      <div>Total number of pages : {numOfPages}</div>
-    </>
+    <Layout>
+      <BlogListing blogs={nodes} />
+      <Link className="button is-small" to={`/blogs/${prevPage}`} rel="prev">
+        Previous
+      </Link>{" "}
+      <Link className="button is-small" to={`/blogs/${nextPage}`} rel="next">
+        Next
+      </Link>
+    </Layout>
   );
 };
 

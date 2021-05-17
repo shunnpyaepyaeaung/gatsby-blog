@@ -4,8 +4,6 @@ import { graphql } from "gatsby";
 import "./blog.scss";
 
 const blog = ({ data, pageContext: { slug } }) => {
-  console.log(data);
-  console.log(slug);
   const {
     html,
     frontmatter: { title },
