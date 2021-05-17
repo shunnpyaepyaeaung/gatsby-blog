@@ -1,11 +1,9 @@
 import React from "react";
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import { graphql } from "gatsby";
-import "./blog.scss";
+import "../../templates/blog.scss";
 
 const blog = ({ data, pageContext: { slug } }) => {
-  console.log(data);
-  console.log(slug);
   const {
     html,
     frontmatter: { title },
@@ -23,8 +21,8 @@ const blog = ({ data, pageContext: { slug } }) => {
 export default blog;
 
 export const query = graphql`
-  query ($slug: String) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+  query ($id: String) {
+    markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
         title

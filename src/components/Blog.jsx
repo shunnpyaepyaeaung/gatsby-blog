@@ -8,6 +8,7 @@ const style = {
 };
 
 export default function Blog({ title, date, subtitle, slug }) {
+  console.log(title, date, subtitle, slug);
   return (
     <>
       <div className="content is-normal">
