@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import * as styles from "./SearchContainer.module.scss";
 import searchIndex from "./searchIndex.json";
 import * as JsSearch from "js-search";
+import { navigate } from "gatsby";
 
 export default function SearchContainer() {
   const [search, setSearch] = useState({
@@ -51,6 +52,7 @@ export default function SearchContainer() {
           <ul>
             {search.results.map((result) => (
               <li
+                onClick={() => navigate(`/blogs/${result.slug}`)}
                 role="presentation"
                 key={result.slug}
                 className={`${styles.option} p-2`}
