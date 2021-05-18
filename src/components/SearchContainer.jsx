@@ -4,31 +4,40 @@ import searchIndex from "./searchIndex.json";
 import * as JsSearch from "js-search";
 
 export default function SearchContainer() {
-  const [search, setSearch] = useState({ results: [], engine: {}, query: "" });
+  const [search, setSearch] = useState({
+    results: [],
+    engine: {},
+    query: "",
+  });
 
   const rebuildIndex = useCallback(() => {
     const searchEngine = new JsSearch.Search("slug");
-    //for case sensitive
+    // for lowercase sensitivity
     searchEngine.sanitizer = new JsSearch.LowerCaseSanitizer();
     searchEngine.indexStrategy = new JsSearch.PrefixIndexStrategy();
     searchEngine.searchIndex = new JsSearch.TfIdfSearchIndex("slug");
+
     searchEngine.addIndex("title");
     searchEngine.addIndex("subtitle");
-    searchEngine.addDocument(searchIndex.blogs);
+    searchEngine.addDocuments(searchIndex.blogs);
+
     setSearch((search) => ({ ...search, engine: searchEngine }));
-  }, []);
+  }, [searchIndex]);
 
   useEffect(() => {
     rebuildIndex();
   }, [rebuildIndex]);
 
   const performSearch = (e) => {
-    setSearch({ ...search, query: e.target.value });
+    const { value } = e.target;
+    const results = search.engine.search(value);
+    setSearch({ ...search, results, query: value });
   };
+
+  console.log(search);
 
   return (
     <div>
-      {JSON.stringify(searchIndex)}
       <input
         onChange={performSearch}
         value={search.query}
