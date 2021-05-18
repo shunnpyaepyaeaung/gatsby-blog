@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as styles from "./SearchContainer.module.scss";
+import searchIndex from "./searchIndex.json";
 
 export default function SearchContainer() {
   const [search, setSearch] = useState({
@@ -19,6 +20,7 @@ export default function SearchContainer() {
 
   return (
     <div>
+      {JSON.stringify(searchIndex)}
       <input
         style={{ width: "200px" }}
         className="input"

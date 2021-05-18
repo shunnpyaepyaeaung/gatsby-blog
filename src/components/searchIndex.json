@@ -1,0 +1,24 @@
+{
+  "blogs": [
+    {
+      "slug": "angular-framework-introduction",
+      "title": "Angular Framework Introduction",
+      "subtitle": "Quick introduction into amazing angular framework!"
+    },
+    {
+      "slug": "js-design-pattern",
+      "title": "Javascript Design Pattern",
+      "subtitle": "Learn something new, design patterns are still cool!"
+    },
+    {
+      "slug": "learn-gatsby-quick",
+      "title": "Learn Gatsby Fast",
+      "subtitle": "learning Gatsby is super speed up!"
+    },
+    {
+      "slug": "learn-program-in-js",
+      "title": "Learn Programming in JS",
+      "subtitle": "learning programming is super cool!"
+    }
+  ]
+}
