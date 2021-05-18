@@ -19,12 +19,19 @@ export default function SearchContainer() {
     searchEngine.addIndex("title");
     searchEngine.addIndex("subtitle");
     searchEngine.addDocument(searchIndex.blogs);
+    setSearch({ ...search, engine: searchEngine });
+  };
+
+  const performSearch = (e) => {
+    setSearch({ ...search, query: e.target.value });
   };
 
   return (
     <div>
       {JSON.stringify(searchIndex)}
       <input
+        onChange={performSearch}
+        value={search.query}
         style={{ width: "200px" }}
         className="input"
         type="text"
