@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import FeaturedBlog from "../components/FeaturedBlog";
 import BlogListing from "../components/BlogListing";
+import SearchContainer from "../components/SearchContainer";
 
 export default function Index({ data }) {
   const { nodes } = data.allMarkdownRemark;
@@ -18,7 +19,7 @@ export default function Index({ data }) {
         })}
       </div>
       <div className="p-4">
-        <BlogListing blogs={nodes} />
+        <BlogListing search={SearchContainer} blogs={nodes} />
       </div>
     </Layout>
   );
