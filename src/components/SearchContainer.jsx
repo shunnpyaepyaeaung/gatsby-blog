@@ -4,20 +4,7 @@ import searchIndex from "./searchIndex.json";
 import * as JsSearch from "js-search";
 
 export default function SearchContainer() {
-  const [search, setSearch] = useState({
-    results: [
-      {
-        slug: "blog-1",
-        title: "blog 1 title",
-        subtitle: "blog 1 subtitle",
-      },
-      {
-        slug: "blog-2",
-        title: "blog 2 title",
-        subtitle: "blog 2 subtitle",
-      },
-    ],
-  });
+  const [search, setSearch] = useState({ results: [], engine: {}, query: "" });
 
   useEffect(() => {
     rebuildIndex();
@@ -25,12 +12,13 @@ export default function SearchContainer() {
 
   const rebuildIndex = () => {
     const searchEngine = new JsSearch.Search("slug");
+    //for case sensitive
+    searchEngine.sanitizer = new JsSearch.LowerCaseSanitizer();
+    searchEngine.indexStrategy = new JsSearch.PrefixIndexStrategy();
+    searchEngine.searchIndex = new JsSearch.TfIdfSearchIndex("slug");
     searchEngine.addIndex("title");
     searchEngine.addIndex("subtitle");
     searchEngine.addDocument(searchIndex.blogs);
-    const search1 = searchEngine.search("pattern");
-    const search2 = searchEngine.search("Gatsby");
-    debugger;
   };
 
   return (
