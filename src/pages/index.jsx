@@ -5,7 +5,7 @@ import FeaturedBlog from "../components/FeaturedBlog";
 import BlogListing from "../components/BlogListing";
 import SearchContainer from "../components/SearchContainer";
 
-export default function Index({ data }) {
+export default function Index({ data, pageContext }) {
   const { nodes } = data.allMarkdownRemark;
   return (
     <Layout>
@@ -19,7 +19,12 @@ export default function Index({ data }) {
         })}
       </div>
       <div className="p-4">
-        <BlogListing search={SearchContainer} blogs={nodes} />
+        <BlogListing
+          search={() => (
+            <SearchContainer searchIndex={pageContext.searchIndex} />
+          )}
+          blogs={nodes}
+        />
       </div>
     </Layout>
   );

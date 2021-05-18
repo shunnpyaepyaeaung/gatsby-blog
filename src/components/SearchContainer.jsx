@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import * as styles from "./SearchContainer.module.scss";
-import searchIndex from "./searchIndex.json";
 import * as JsSearch from "js-search";
 import { navigate } from "gatsby";
 
-export default function SearchContainer() {
+export default function SearchContainer({ searchIndex }) {
   const [search, setSearch] = useState({
     results: [],
     engine: {},
