@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import * as styles from "./SearchContainer.module.scss";
 import searchIndex from "./searchIndex.json";
 import * as JsSearch from "js-search";
@@ -6,11 +6,7 @@ import * as JsSearch from "js-search";
 export default function SearchContainer() {
   const [search, setSearch] = useState({ results: [], engine: {}, query: "" });
 
-  useEffect(() => {
-    rebuildIndex();
-  }, []);
-
-  const rebuildIndex = () => {
+  const rebuildIndex = useCallback(() => {
     const searchEngine = new JsSearch.Search("slug");
     //for case sensitive
     searchEngine.sanitizer = new JsSearch.LowerCaseSanitizer();
@@ -19,8 +15,12 @@ export default function SearchContainer() {
     searchEngine.addIndex("title");
     searchEngine.addIndex("subtitle");
     searchEngine.addDocument(searchIndex.blogs);
-    setSearch({ ...search, engine: searchEngine });
-  };
+    setSearch((search) => ({ ...search, engine: searchEngine }));
+  }, []);
+
+  useEffect(() => {
+    rebuildIndex();
+  }, [rebuildIndex]);
 
   const performSearch = (e) => {
     setSearch({ ...search, query: e.target.value });
