@@ -33,7 +33,7 @@ export default function AppHeader() {
             <div className="field is-grouped">
               <p className="control">
                 <a
-                  className="bd-tw-button button"
+                  className="bd-tw-button button is-rounded"
                   data-social-network="Twitter"
                   data-social-action="tweet"
                   data-social-target="https://eincode.com"
@@ -45,7 +45,7 @@ export default function AppHeader() {
                 </a>
               </p>
               <p className="control">
-                <a className="button is-primary" href="/">
+                <a className="button is-info is-rounded" href="/">
                   <span>Login</span>
                 </a>
               </p>

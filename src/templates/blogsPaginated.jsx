@@ -21,7 +21,7 @@ const blogsPaginated = ({ pageContext, data }) => {
       <BlogListing blogs={nodes} />
       <Link
         disabled={isFirst}
-        className="button is-small"
+        className="button is-dark is-small"
         to={`/blogs/${prevPage}`}
         rel="prev"
       >
@@ -29,7 +29,7 @@ const blogsPaginated = ({ pageContext, data }) => {
       </Link>{" "}
       <Link
         disabled={isLast}
-        className="button is-small"
+        className="button is-dark is-small"
         to={`/blogs/${nextPage}`}
         rel="next"
       >
