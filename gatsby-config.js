@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Gatsby Blog",
+    description: "The best place to share knowledges",
     body: {
       content: "Just some SEO content",
     },
@@ -29,5 +30,6 @@ module.exports = {
         ],
       },
     },
+    "gatsby-plugin-react-helmet",
   ],
 };

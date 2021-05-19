@@ -4,11 +4,13 @@ import { graphql } from "gatsby";
 import FeaturedBlog from "../components/FeaturedBlog";
 import BlogListing from "../components/BlogListing";
 import SearchContainer from "../components/SearchContainer";
+import Seo from "../components/Seo";
 
 export default function Index({ data, pageContext }) {
   const { nodes } = data.allMarkdownRemark;
   return (
     <Layout>
+      <Seo />
       <div className="columns">
         {nodes.slice(0, 2).map((node) => {
           return (
