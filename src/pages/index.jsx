@@ -30,7 +30,7 @@ export default function Index({ data, pageContext }) {
           )}
           blogs={nodes}
         />
-        <Link className="button is-info is-outlined" to="/blogs">
+        <Link className="button is-danger is-outlined" to="/blogs">
           Read more blogs...
         </Link>
       </div>
