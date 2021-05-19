@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import FeaturedBlog from "../components/FeaturedBlog";
 import BlogListing from "../components/BlogListing";
 import SearchContainer from "../components/SearchContainer";
@@ -30,6 +30,9 @@ export default function Index({ data, pageContext }) {
           )}
           blogs={nodes}
         />
+        <Link className="button is-primary is-outlined" to="/blogs">
+          Read more blogs...
+        </Link>
       </div>
     </Layout>
   );

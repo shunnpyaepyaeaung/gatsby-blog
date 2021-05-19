@@ -2,6 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import BlogListing from "../components/BlogListing";
+import Seo from "../components/Seo";
 
 const blogsPaginated = ({ pageContext, data }) => {
   const { limit, currentPage, numOfPages } = pageContext;
@@ -13,17 +14,11 @@ const blogsPaginated = ({ pageContext, data }) => {
   const nextPage = (currentPage + 1).toString();
   return (
     <Layout>
+      <Seo
+        title="Blogs"
+        description="Fresh Code Space blogs about technology"
+      />
       <BlogListing blogs={nodes} />
-      {/*  {!isFirst && (
-        <Link className="button is-small" to={`/blogs/${prevPage}`} rel="prev">
-          Previous
-        </Link>
-      )}{" "}
-      {!isLast && (
-        <Link className="button is-small" to={`/blogs/${nextPage}`} rel="next">
-          Next
-        </Link>
-      )} */}
       <Link
         disabled={isFirst}
         className="button is-small"
