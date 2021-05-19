@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Blog",
+    title: "Code Space Blog",
     description: "The best place to share knowledges",
     body: {
       content: "Just some SEO content",
