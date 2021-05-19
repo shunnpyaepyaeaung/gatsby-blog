@@ -5,6 +5,7 @@ date: 2021-05-10
 slug: learn-gatsby-quick
 author: Shunn Pyae Pyae Aung
 rating: 4
+cover: https://miro.medium.com/max/1000/1*G9aVAI3aezHLw_JsiCfB1Q.jpeg
 ---
 
 # h1 Heading 8-)

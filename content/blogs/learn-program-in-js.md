@@ -5,6 +5,7 @@ date: 2021-10-10
 slug: learn-program-in-js
 author: Shunn Pyae Pyae Aung
 rating: 1
+cover: https://miro.medium.com/max/1400/1*LyZcwuLWv2FArOumCxobpA.png
 ---
 
 ## Emphasis

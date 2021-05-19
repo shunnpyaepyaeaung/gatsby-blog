@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-const Seo = ({ title, description, meta = [] }) => {
+const Seo = ({ title, image, description, meta = [] }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,6 +19,10 @@ const Seo = ({ title, description, meta = [] }) => {
     ? `${title} | ${site.siteMetadata?.title}`
     : site.siteMetadata?.title;
   const defaultDescription = description || site.siteMetadata?.description;
+  const defaultImage =
+    image ||
+    "https://content.techgig.com/thumb/msid-79110796,width-860,resizemode-4/5-Strongest-reasons-for-non-programmers-to-learn-coding.jpg?58220";
+
   return (
     <Helmet
       htmlAttributes={{
@@ -44,8 +48,7 @@ const Seo = ({ title, description, meta = [] }) => {
         },
         {
           name: "og: image",
-          content:
-            "https://content.techgig.com/thumb/msid-79110796,width-860,resizemode-4/5-Strongest-reasons-for-non-programmers-to-learn-coding.jpg?58220",
+          content: defaultImage,
         },
         {
           name: "twitter:card",
@@ -65,8 +68,7 @@ const Seo = ({ title, description, meta = [] }) => {
         },
         {
           name: "twitter: image",
-          content:
-            "https://content.techgig.com/thumb/msid-79110796,width-860,resizemode-4/5-Strongest-reasons-for-non-programmers-to-learn-coding.jpg?58220",
+          content: defaultImage,
         },
       ].concat(meta)}
     />
