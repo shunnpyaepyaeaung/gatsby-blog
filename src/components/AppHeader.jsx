@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import ThemeToggle from "./ThemeToggle";
 
 export default function AppHeader() {
   return (
@@ -31,6 +32,7 @@ export default function AppHeader() {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="field is-grouped">
+              <ThemeToggle className="is-flex is-align-self-center mr-5" />
               <p className="control">
                 <a
                   className="bd-tw-button button is-rounded"
