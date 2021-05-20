@@ -5,7 +5,7 @@ import BlogListing from "../components/BlogListing";
 import Seo from "../components/Seo";
 
 const blogsPaginated = ({ pageContext, data }) => {
-  const { limit, currentPage, numOfPages } = pageContext;
+  const { currentPage, numOfPages } = pageContext;
   const { nodes } = data.allMarkdownRemark;
 
   const isFirst = currentPage === 1;

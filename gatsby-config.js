@@ -50,6 +50,19 @@ module.exports = {
         theme_color: "#a2466c",
         display: "standalone",
         icon: "src/images/icon.png",
+        icons: [
+          {
+            src: "src/images/icon.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "src/images/maskable_icon.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
         crossOrigin: `use-credentials`,
       },
     },
