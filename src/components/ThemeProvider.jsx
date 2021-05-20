@@ -1,4 +1,10 @@
-import React, { createContext, useContext } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 
 const themes = {
   light: {
@@ -9,17 +15,28 @@ const themes = {
   dark: {
     type: "dark",
     fontColor: "#dcdcdc",
-    background: "#2v2c38",
+    background: "#2b2c38",
   },
 };
 
 const ThemeContext = createContext({});
 
 const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(themes.light);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === themes.dark ? themes.light : themes.dark);
+  }, [theme]);
+
+  const themeAPI = useMemo(() => {
+    return {
+      theme,
+      toggleTheme,
+    };
+  }, [theme, toggleTheme]);
+
   return (
-    <ThemeContext.Provider value={themes.dark}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={themeAPI}>{children}</ThemeContext.Provider>
   );
 };
 
