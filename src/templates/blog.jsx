@@ -7,11 +7,17 @@ import Seo from "../components/Seo";
 const blog = ({ data }) => {
   const {
     html,
-    frontmatter: { title, subtitle, cover },
+    frontmatter: { title, subtitle, cover, slug },
   } = data.markdownRemark;
+  const seo = {
+    title,
+    subtitle,
+    image: cover,
+    url: `/blogs/${slug}`,
+  };
   return (
-    <Layout>
-      <Seo title={title} description={subtitle} image={cover} />
+    <Layout seo={seo}>
+      <Seo {...seo} />
       <h1>{title}</h1>
       <div className="blog-content">
         <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -30,6 +36,7 @@ export const query = graphql`
         title
         subtitle
         cover
+        slug
       }
     }
   }

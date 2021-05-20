@@ -2,10 +2,10 @@ import React from "react";
 import AppHeader from "./AppHeader";
 import Footer from "./Footer";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, seo }) => {
   return (
     <div className="container is-max-desktop">
-      <AppHeader />
+      <AppHeader seo={seo} />
       {children}
       <Footer />
     </div>
