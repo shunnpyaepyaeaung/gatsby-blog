@@ -10,4 +10,6 @@ cover: https://www.alvantia.com/wp-content/uploads/2018/10/imagen-Angular-2.jpg
 
 ## Quick introduction into amazing angular framework
 
+![alt text](https://www.alvantia.com/wp-content/uploads/2018/10/imagen-Angular-2.jpg "Logo Title Text")
+
 Quick introduction into amazing angular framework!

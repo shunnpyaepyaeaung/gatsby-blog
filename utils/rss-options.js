@@ -36,6 +36,7 @@ module.exports = {
       `,
         title: "Code Space News",
         output: "/rss.xml",
+        match: "^/blogs/",
       },
     ],
   },

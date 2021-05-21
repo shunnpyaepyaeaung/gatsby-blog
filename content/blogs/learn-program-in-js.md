@@ -10,6 +10,8 @@ cover: https://miro.medium.com/max/1400/1*LyZcwuLWv2FArOumCxobpA.png
 
 ## Emphasis
 
+![alt text](https://miro.medium.com/max/1400/1*LyZcwuLWv2FArOumCxobpA.png "Logo Title Text")
+
 **This is bold text**
 
 **This is bold text**

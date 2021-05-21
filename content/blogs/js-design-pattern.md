@@ -10,4 +10,6 @@ cover: https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=600/v2api/colle
 
 ## Learn something new, design patterns are still cool!
 
+![alt text](https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=600/v2api/collection/10370001/5710902082928640/image/5719042186805248 "Logo Title Text")
+
 Learn something new, design patterns are still cool!

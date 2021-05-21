@@ -10,6 +10,8 @@ cover: https://miro.medium.com/max/1000/1*G9aVAI3aezHLw_JsiCfB1Q.jpeg
 
 # h1 Heading 8-)
 
+![alt text](https://miro.medium.com/max/1000/1*G9aVAI3aezHLw_JsiCfB1Q.jpeg "Logo Title Text")
+
 ## h2 Heading
 
 ### h3 Heading
