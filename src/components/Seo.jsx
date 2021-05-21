@@ -35,6 +35,10 @@ const Seo = ({ title, image, description, meta = [] }) => {
           content: defaultDescription,
         },
         {
+          name: "google-site-verification",
+          content: "9h8GBkV_hXUn8hlafE7535S0DixIr7qpZIPmhwy4IcI",
+        },
+        {
           name: "og:title",
           content: defaultTitle,
         },
